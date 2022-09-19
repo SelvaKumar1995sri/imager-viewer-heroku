@@ -2,8 +2,8 @@ from flask import Flask,request,render_template,redirect,url_for
 import os
 app = Flask(__name__)
 
-
-app.config["IMAGE_UPLOADS"] = "/Users\selva\Documents\image_heroku_deploy/static/Images"
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+app.config["IMAGE_UPLOADS"] = os.path.join(APP_ROOT,'static/images/')
 #app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG","JPG","JPEG"]
 
 from werkzeug.utils import secure_filename
@@ -35,5 +35,5 @@ def upload_image():
 def display_image(filename):
 	return redirect(url_for('static',filename = "/Images" + filename), code=301)
 
-
-# app.run(debug=True,port=2000)
+if __name__ == '__main__':
+	app.run(debug=True,port=2000)
