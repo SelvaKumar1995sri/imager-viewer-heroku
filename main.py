@@ -36,4 +36,4 @@ def display_image(filename):
 	return redirect(url_for('static',filename = "/Images" + filename), code=301)
 
 
-app.run(debug=True,port=2000)
+# app.run(debug=True,port=2000)
